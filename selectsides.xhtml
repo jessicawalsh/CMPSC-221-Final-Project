@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Page that allows user to picks sides and side quantity-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Select sides</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h1>Select Your Sides</h1>
+            <!--radio buttons to select sides-->
+            <h:selectOneRadio id="topicSelectOneRadio" required="true" value ="#{ordersBean.side}">
+                <f:selectItem itemValue="1" itemLabel="Mozarella Sticks"/>
+                <f:selectItem itemValue="2" itemLabel="Buffalo Wings"/>
+            </h:selectOneRadio>
+            <!--images of sides-->
+            <h:graphicImage name="cheesestick.jpg" library="images" height="200px" ></h:graphicImage>
+            <h:graphicImage name="buffalowing.jpg" library="images" height="200px" ></h:graphicImage>
+            <h:panelGrid columns="2">
+              <h:outputText value="Sides Quantity:"/>
+              <h:inputText id="sidesInputText" required="true" requiredMessage="Please enter a quantity"
+                           value="#{ordersBean.sideQuantity}"/>
+            </h:panelGrid>
+            <br></br>  <!--button that takes user to the selectdrink page-->           
+            <h:commandButton value="Next Step: select your drinks" action="selectdrink.xhtml"></h:commandButton>                        
+      </h:form>
+   </h:body>
+</html>

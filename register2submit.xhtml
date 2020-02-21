@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- page where users input customer information-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Validating Form Data</title>
+        <h:outputStylesheet name="style.css" library="css"/>
+    </h:head>
+    <body>
+        <h:form>
+            <h1>Register and Submit Your Order</h1>
+            <h:panelGrid columns="4">
+                <h:outputText value="First Name:"/>
+                <h:inputText id="firstnameInputText" 
+                             required="true" 
+                             requiredMessage="Please enter your first name"
+                             value="#{ordersBean.firstNameInput}">
+                </h:inputText>
+                <br></br>
+                <h:message for="firstNameInputText" styleClass="error"/>
+                <h:outputText value="Last Name:"/>
+                <h:inputText id="lastNameInputText"
+                             required="true"
+                             requiredMessage="Please enter your last name"
+                             value="#{ordersBean.lastNameInput}">
+                </h:inputText>
+                <br></br>
+                <h:message for="lastNameInputText" styleClass="error"/>       
+                <h:outputText value="E-mail:"/>
+                <h:inputText id="emailInputText" 
+                             required="false"
+                             value="#{ordersBean.emailInput}"
+                             validatorMessage="Invalid e-mail address format">
+                     <f:validateRegex pattern="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"/>
+                </h:inputText>
+                <br></br>
+                <h:message for="emailInputText" styleClass="error"/>
+                <h:outputText value="Phone:"/>
+                <h:inputText id="phoneInputText"
+                             required="true"
+                             requiredMessage="Please enter a valid phone number"
+                             value="#{ordersBean.phoneNumberInput}"
+                             validatorMessage="Invalid phone number format">
+                    <f:validateRegex pattern="((\(\d{3}\)?)|(\d{3}-))?\d{3}-\d{4}"/>
+                </h:inputText>
+                <h:message for="phoneInputText" styleClass="error"/>
+            </h:panelGrid> 
+            <h:commandButton value="Place Your Order" action="#{ordersBean.save}" />
+            <br></br>
+            <h:outputText escape="false" value="#{ordersBean.result}"/>   
+            <h:commandButton value="Return to Homepage" action="index.xhtml" />
+        </h:form>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- page to select type of pizza and pizza quantity-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>select pizza</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body> 
+        <h:form>
+            <h1>Select Your Pizza</h1>
+            <!--radio buttons to select type of pizza-->
+            <p><h:selectOneRadio id="pizzaSelectOneRadio" required="true" value ="#{ordersBean.pizza}">
+                <f:selectItem itemValue="1" itemLabel="Pepperoni Pizza"/>
+                <f:selectItem itemValue="2" itemLabel="Sausage Pizza" />
+                <f:selectItem itemValue="3"  itemLabel="Cheese Pizza" />
+                </h:selectOneRadio></p>
+            <!--images of pizza types-->
+            <p> <h:graphicImage name="pepperoni.jpg" library="images" height="200px" ></h:graphicImage>
+            <h:graphicImage name="sausage.jpg" library="images" height="200px"></h:graphicImage>
+            <h:graphicImage name="cheese.jpg" library="images" height="200px"></h:graphicImage></p>
+            <h:panelGrid columns="2">
+                <h:outputText value="Pizza Quantity:"/>
+                <h:inputText id="quantityInputText" required="true" requiredMessage="Please enter a quantity"
+                           value="#{ordersBean.pizzaQuantity}"/>
+            </h:panelGrid>
+            <br></br>
+            <!--button that takes user to the selectsides page-->
+            <h:commandButton value="Next Step: select your sides" action="selectsides.xhtml"></h:commandButton>                        
+      </h:form>
+   </h:body>
+</html>

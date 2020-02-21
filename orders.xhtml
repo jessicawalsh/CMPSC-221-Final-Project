@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- displays order history-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Orders</title>
+        <h:outputStylesheet name="style.css" library="css"/>
+    </h:head>
+    <h:body>
+        <h1>All Past Pizza Orders</h1>
+        <h:form>
+            <!-- button that returns to the index-->
+            <p><h:commandButton value="Return to Welcome Page" action="index.xhtml"/></p>
+        </h:form>
+        <!-- data table that displays order history-->
+        <h:dataTable value="#{ordersBean.addresses}" 
+            var="orders"
+            rowClasses="oddRows, evenRows"
+            headerClass="header"
+            styleClass="table"
+            cellpadding="5"
+            cellspacing="0">
+            <h:column>
+                <f:facet name="header">Order Id</f:facet>
+                #{orders.orderID}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Phone Number</f:facet>
+                #{orders.phoneNumberInput}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Order Time</f:facet>
+                #{orders.orderTime}                
+            </h:column>
+            <h:column>
+                <f:facet name="header">Amount</f:facet>
+                #{orders.totalPrice}                
+            </h:column>            
+        </h:dataTable>
+    </h:body>
+</html>

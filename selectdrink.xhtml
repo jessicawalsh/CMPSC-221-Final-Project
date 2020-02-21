@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Page to select drink and drink quantity-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Select drink</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h1>Select Your Drink</h1>
+      <h:form>
+        <h:selectOneRadio id="topicSelectOneRadio" required="true" value ="#{ordersBean.drink}">
+            <f:selectItem itemValue="1" itemLabel="Pepsi"/>
+            <f:selectItem itemValue="2" itemLabel="Bottled Water"/>
+        </h:selectOneRadio>
+          <h:graphicImage name="pepsi.jpg" library="images" height="200px" ></h:graphicImage>
+          <h:graphicImage name="water.jpg" library="images" height="200px" ></h:graphicImage>
+          <h:panelGrid columns="2">
+              <h:outputText value="Drink Quantity:"/>
+              <h:inputText id="drinkInputText" required="true" requiredMessage="Please enter a quantity"
+                           value="#{ordersBean.drinkQuantity}"/>
+          </h:panelGrid>
+          <br></br>
+          <h:commandButton value="Next Step: Register and Submit" action="register2submit.xhtml"></h:commandButton>                         
+      </h:form>
+   </h:body>
+</html>
